@@ -6,7 +6,9 @@ gem 'sinatra-contrib'
 gem 'slim'
 
 gem 'warden'
+
 gem 'rack-cache'
+gem 'dalli'
 
 gem 'net-ldap', github: 'ruby-ldap/ruby-net-ldap'
 gem 'ku-ldap', git: 'https://github.com/jamiehodge/ku-ldap.git'
