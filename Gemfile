@@ -8,8 +8,8 @@ gem 'slim'
 gem 'warden'
 gem 'rack-cache'
 
-gem 'ku-ldap', github: 'jamiehodge/ku-ldap'
-gem 'ku-media', github: 'jamiehodge/ku-media'
+gem 'ku-ldap', git: 'https://github.com/jamiehodge/ku-ldap.git'
+gem 'ku-media', git: 'https://github.com/jamiehodge/ku-media.git'
 gem 'net-ldap'
 
 gem 'rake-pipeline', github: 'livingsocial/rake-pipeline'
