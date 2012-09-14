@@ -11,11 +11,11 @@ ENV['RACK_ENV'] ||= 'production'
 bundler_args = ['--deployment', '--quiet', '--binstubs', '--shebang', 'ruby-local-exec']
 bundler_args << '--without development:test'
 
-run "bundle install #{bundler_args.join(' ')}"
+run "~/.rbenv/shims/bundle install #{bundler_args.join(' ')}"
 
 tasks = []
 tasks << 'db:migrate'
 
-run "bundle exec rake #{tasks.join(' ')}" if tasks.any?
+run "~/.rbenv/shims/bundle exec rake #{tasks.join(' ')}" if tasks.any?
 
 run 'git clean -x -f -- public/stylesheets public/javascripts'
