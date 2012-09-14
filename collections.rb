@@ -11,7 +11,7 @@ class Collections < Base
   namespace '/' do
   
     get do      
-      etag collections_index.sum(:lock_version)
+      # etag collections_index.sum(:lock_version)
       last_modified collections_index.first.updated_at unless collections_index.empty?
     
       slim :'collections/index', locals: { collections: collections_index }
