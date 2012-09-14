@@ -25,6 +25,8 @@ gem 'unicorn'
 
 gem 'addressable'
 
+gem 'queue_classic'
+
 group :test do
   gem 'rack-test'
   gem 'minitest'
