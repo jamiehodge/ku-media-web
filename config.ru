@@ -9,7 +9,7 @@ require './config/warden'
 
 require 'rack/cache'
 
-use Rack::Session::Cookie, secret: SecureRandom.hex(64)
+use Rack::Session::Cookie, secret: ENV['RACK_SESSION_SECRET'] || SecureRandom.hex(64)
 
 use Warden::Manager do |m|
   m.default_strategies :password
