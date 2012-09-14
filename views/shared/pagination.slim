@@ -1,0 +1,9 @@
+nav.pagination
+  = page_count > 0 ? "#{current_page} of #{page_count}" : "no results"
+  ul
+    - if prev_page
+      li 
+        a rel='prev' href="?page=#{prev_page}" < previous
+    - if next_page
+      li 
+        a rel='next' href="?page=#{next_page}" next >

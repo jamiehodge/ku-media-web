@@ -1,0 +1,8 @@
+form method='post' action="/#{@collection.id}/links"
+  fieldset
+    p
+      label
+        ' url
+        input name='link[url]' type='url' required=true maxlength=255
+    p
+      input type='submit' value='add'

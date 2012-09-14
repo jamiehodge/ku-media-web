@@ -1,0 +1,14 @@
+form method='post' action=url("/#{collection.id}")
+  fieldset
+    input type='hidden' name='_method' value='put'
+    p
+      label
+        ' title
+        input name='collection[title]' value=collection.title required=true maxlength=255
+    p
+      label
+        ' description
+        textarea name='collection[description]' required=true maxlength=255 = collection.description
+    p
+      input type='submit' value='update'
+

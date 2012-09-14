@@ -1,0 +1,45 @@
+// Settings
+
+$total-columns  : 7;
+$column-width   : 4em;
+$gutter-width   : 1em;
+$grid-padding   : $gutter-width;
+
+$break          : 12;
+
+@include border-box-sizing;
+@include establish-baseline;
+
+// Container
+
+#container {
+  @include container($total-columns, $break);
+  @include leader;
+}
+
+// Layout
+
+@include at-breakpoint($break) {
+  // #container { @include susy-grid-background; }
+  
+  [role=banner]     { @include prefix(2,12); }
+  [role=navigation] { @include span-columns(2,12); }
+  [role=main] { 
+    @include span-columns(7,10); 
+    article {
+      // dl { @include column-count(2); }
+    }
+    nav.pagination { @include prefix(4,10); }
+  }
+  [role=complementary] { @include span-columns(3 omega,10); }
+}
+
+[role=contentinfo] {
+  clear: both;
+  margin: 0 0 - $grid-padding;
+  padding: 0 $grid-padding;
+  @include at-breakpoint($break) {
+    margin: 0;
+    @include pad(2,3,12);
+  }
+}

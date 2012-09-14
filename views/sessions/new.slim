@@ -1,0 +1,12 @@
+form.create method='post' action=url('/')
+  fieldset
+    p
+      label
+        'id
+        input name='user[id]' type='text' required=true maxlength=255
+    p
+      label
+        'password
+        input name='user[password]' type='password' required=true maxlength=255
+    p
+      input type='submit' value='login'

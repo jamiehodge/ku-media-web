@@ -1,0 +1,12 @@
+form method='post' action=url('/')
+  fieldset
+    p
+      label
+        ' title
+        input name='collection[title]' type='text' required=true maxlength=255
+    p
+      label
+        ' description
+        textarea name='collection[description]' required=true maxlength=255
+    p
+      input type='submit' value='create'

@@ -1,0 +1,8 @@
+form.search action=request.path
+  fieldset
+    p
+      input name='q' type='search' results=5 autosave=request.path placeholder='search' value=query
+
+    - unless query.blank?
+      p
+        a href=request.path cancel

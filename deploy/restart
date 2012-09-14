@@ -1,0 +1,4 @@
+#!/bin/sh
+echo "restarting Unicorn app"
+
+kill -USR2 $( cat tmp/pids/unicorn.pid )

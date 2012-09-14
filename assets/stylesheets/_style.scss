@@ -1,0 +1,36 @@
+h1 {
+  text-weight: bold;
+}
+
+nav {
+  ol {
+    @extend small;
+    @include delimited-list(' > ');
+    li { text-transform: lowercase; }
+  }
+  &.pagination { 
+    @include horizontal-list; 
+    li { @extend .smallcaps; }
+  }
+}
+
+.ellipsis { 
+  @include ellipsis;
+}
+
+form {
+  fieldset {
+    background-color: #eee;
+  }
+  &.compact {
+    display: inline;
+    padding-right: rhythm(.5);
+  }
+}
+
+section { 
+  @include leading-border; 
+  border-color: #eee;
+}
+
+header[role=banner] { a { color: #aaa; }}

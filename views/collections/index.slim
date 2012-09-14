@@ -1,0 +1,13 @@
+details
+  summary new
+  == slim :'collections/new'
+
+== slim :'shared/search'
+
+ol.collection
+  - for collection in collections
+    li
+      a rel='item' href=url("/#{collection.id}") = collection.title
+      p.ellipsis = collection.description
+
+== slim :'shared/pagination', scope: collections

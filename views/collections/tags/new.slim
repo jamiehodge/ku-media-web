@@ -1,0 +1,8 @@
+form method='post' action="/#{@collection.id}/tags"
+  fieldset
+    p
+      label
+        ' name
+        input name='tag[name]' required=true maxlength=255
+    p
+      input type='submit' value='add'

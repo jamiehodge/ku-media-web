@@ -1,0 +1,60 @@
+article
+  header
+    h1
+      a rel='self' href=url("/#{collection.id}") = collection.title
+    small
+      p
+        ' created
+        time datetime=collection.created_at.xmlschema = collection.created_at.strftime '%A, %b %d'
+        ', updated
+        time pubdate=true datetime=collection.updated_at.xmlschema = collection.updated_at.strftime '%A, %b %d'
+  
+  section
+   
+    details
+      summary edit
+      == slim :'collections/edit',    locals: { collection: collection }
+      == slim :'collections/delete',  locals: { collection: collection }
+      
+    dl
+      dt description
+      dd = collection.description
+      dt 
+        details
+          summary authors
+          == slim :'collections/authors/new', locals: { collection: collection }
+      - for author in collection.authors
+        dd 
+          == slim :'collections/authors/delete', locals: { collection: collection, author: author }
+          = author.description
+      dt 
+        details
+          summary keywords
+          == slim :'collections/keywords/new', locals: { collection: collection }
+      - for keyword in collection.keywords
+        dd 
+          == slim :'collections/keywords/delete', locals: { collection: collection, keyword: keyword }
+          = keyword.name
+      dt 
+        details
+          summary tags
+          == slim :'collections/tags/new', locals: { collection: collection }
+      - for tag in collection.tags
+        dd 
+          == slim :'collections/tags/delete', locals: { collection: collection, tag: tag }
+          a href=URI.encode("http://twitter.com/search/?q=\"#{tag.name}\"") title=tag.name target='_blank' ##{tag.name}
+      dt 
+        details
+          summary links
+          == slim :'collections/links/new', locals: { collection: collection }
+      - for link in collection.links
+        dd
+          == slim :'collections/links/delete', locals: { collection: collection, link: link }
+          a href=link.url title=link.title target='_blank' = link.title
+      
+  section
+      
+    details
+      summary items
+      == slim :'collections/items/new', locals: {collection: collection}
+    == slim :'collections/items/index', locals: { items: collection.items_dataset.search(query) }

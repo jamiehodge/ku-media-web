@@ -1,0 +1,44 @@
+nav
+  ol
+    li: a rel='root' href='/' collections
+    li: a href="/#{item.collection.id}" = item.collection.title
+    li = item.title
+    
+aside
+  details
+    summary edit
+    == slim :'items/edit', locals: { item: item }
+    == slim :'items/delete', locals: { item: item }
+  
+article
+  header
+    h1
+      a rel='self' href=url("/#{item.id}") = item.title
+    small
+      p
+        'created
+        time datetime=item.created_at.xmlschema = item.created_at.strftime '%A, %b %d'
+        ', updated
+        time pubdate=true datetime=item.updated_at.xmlschema = item.updated_at.strftime '%A, %b %d'
+    
+  dl
+    dt description
+    dd = item.description
+    dt rating
+    dd = item.explicit ? 'explicit' : 'clean'
+    dt language
+    dd = item.language.name
+    dt category
+    dd = item.category.name
+    dt authors
+    - for author in item.authors
+      dd = author.full_name
+    dt keywords
+    - for keyword in item.keywords
+      dd = keyword.name
+    dt tags
+    - for tag in item.tags
+      dd = tag.name
+    dt links
+    - for link in item.links
+      dd: a href=link.url title=link.name = link.name

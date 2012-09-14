@@ -1,0 +1,30 @@
+form.new method='post' action="/items"
+  fieldset
+    input name='item[collection_id]' type='hidden' value=collection.id
+    p
+      label
+        'title
+        input name='item[title]' required=true maxlength=255
+    p
+      label
+        'description
+        textarea name='item[description]' required=true maxlength=255
+    p
+      label
+        'explicit
+        input type='hidden' name='item[explicit]' value=0
+        input name='item[explicit]' type='checkbox'
+    p
+      label
+        'language
+        select name='item[language_id]' required=true
+          - for language in languages
+            option label=language.name value=language.id
+    p
+      label
+        'category
+        select name='item[category_id]' required=true
+          - for category in categories
+            option label=category.name value=category.id
+    p
+      input type='submit' value='update'

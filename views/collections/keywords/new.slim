@@ -1,0 +1,8 @@
+form method='post' action="/#{@collection.id}/keywords"
+  fieldset
+    p
+      label
+        ' name
+        input name='keyword[name]' required=true maxlength=255
+    p
+      input type='submit' value='add'

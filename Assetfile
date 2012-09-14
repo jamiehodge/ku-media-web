@@ -1,0 +1,27 @@
+require 'rake-pipeline'
+require 'rake-pipeline-web-filters'
+require 'rake-pipeline-web-filters/helpers'
+
+require 'compass'
+require 'susy'
+
+require 'coffee-script'
+require 'uglifier'
+
+output 'public'
+
+input 'assets' do
+  
+  match '**/screen.scss' do
+    scss style: :compressed
+  end
+  
+  match '**/*.coffee' do
+    coffee_script
+  end
+  
+  match '**/*.js' do
+    concat 'javascripts/app.js'
+    uglify
+  end
+end

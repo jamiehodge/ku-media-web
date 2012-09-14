@@ -1,0 +1,181 @@
+// Body
+
+body {  
+  -webkit-font-smooting: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+// Typography
+
+.serif { font-family: $times; }
+  
+.sans { font-family: $helvetica; }
+  
+.mono { font-family: $monaco; }
+  
+.caps { letter-spacing: .1em; }
+  
+  
+.allcaps {
+  @extend .caps;
+  text-transform: uppercase;
+}
+  
+.smallcaps {
+  @extend .caps;
+  font-variant: small-caps;
+}
+
+// Links
+
+a {
+  @include hover-link;
+}
+  
+// Headings
+
+h1, h2, h3, h4, h5, h6 {
+  @extend .sans;
+  a { @include unstyled-link; }
+}
+
+h1 {
+  @include adjust-font-size-to(36px);
+}
+
+h2 {
+  @include adjust-font-size-to(30px);
+}
+
+h3 {
+  @include adjust-font-size-to(24px);
+}
+
+h4 {
+  @include adjust-font-size-to(20px);
+}
+
+// Inline
+
+cite, em, dfn, address, i { font-style: italic; }
+
+strong, dfn, b { font-weight: bold; }
+
+sup, sub {
+  position: relative;
+  font-size: smaller;
+  line-height: 0;
+}
+
+sup { top: -.5em; }
+
+sub { bottom: -.25em; }
+
+abbr, acronym {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+ins { text-decoration: underline; }
+
+del { text-decoration: line-through; }
+
+mark { @include contrasted(complement(black)) }
+
+q { font-style: italic; }
+
+em { font-style: normal; }
+
+pre, code, tt { @extend .mono; }
+
+small { @include adjust-font-size-to(13px); }
+
+// Block
+
+article, header, footer { @include trailer; }
+
+pre {
+  padding: rhythm();
+  white-space: pre;
+  white-space: pre-wrap;
+  white-space: pre-line;
+  word-wrap: break-word;
+}
+
+blockquote {
+  padding: rhythm();
+  font-style: italic;
+}
+
+audio, video { 
+  width: 100%;
+  @include trailer;
+}
+// Lists
+
+ol, ul { 
+  @include no-bullets; 
+  @include trailer;
+  a { @extend .sans; }
+}
+
+dl { @include trailer; }
+
+dt { 
+  @include adjust-font-size-to(13px);
+  @extend .sans;
+}
+
+dd { @include trailer(.5); }
+
+// Tables
+
+table {
+  @include table-scaffolding;
+  @include trailer;
+}
+
+// Forms
+
+form {
+  @include trailer;
+  
+  fieldset {
+    padding: rhythm();
+    border: 1px solid #ccc;
+    @include trailer;
+    
+    legend, label { @extend .sans; }
+    
+    input:not([type=radio]), textarea, select {
+      display: block;
+      @include trailer;
+    
+      @include adjust-font-size-to(16px);
+      @extend .serif;
+      
+      width: 100%;
+    }
+
+    textarea { min-height: rhythm(6); }
+    
+    input[type=search] {
+      -webkit-appearance: none;
+    }
+  
+    input[type=submit],
+    input[type=reset] {
+      width: auto;
+      @include trailer(0);
+    }
+  
+    textarea { resize:vertical; }
+    
+  }
+}
+
+// Details
+
+details {
+  summary { @extend .sans; }
+}

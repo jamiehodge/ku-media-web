@@ -1,0 +1,6 @@
+.rbenv-vars
+.DS_Store
+.sass-cache/
+tmp/
+public/stylesheets/
+public/javascripts/

@@ -1,0 +1,13 @@
+nav
+  ol
+    li items
+    
+== slim :'shared/search'
+
+ol.collection
+  - for item in items
+    li
+      a rel='item' href="/items/#{item.id}" = item.title
+      p.ellipsis = item.description
+
+== slim :'shared/pagination', scope: items
