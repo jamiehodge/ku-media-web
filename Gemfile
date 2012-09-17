@@ -33,6 +33,9 @@ group :test do
   gem 'rack-test'
   gem 'minitest'
   gem 'nokogiri'
+  
+  gem 'capybara'
+  gem 'poltergeist'
 end
 
 group :development do
