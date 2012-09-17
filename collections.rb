@@ -203,7 +203,7 @@ class Collections < Base
     end
     
     def languages
-      KU::Media::Language
+      KU::Media::Language.order(:name)
     end
     
     def categories
