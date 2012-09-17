@@ -5,7 +5,7 @@ require 'ku/media'
 class Collections < Base
   
   before do
-    env['warden'].authenticate!
+    env['warden'] && env['warden'].authenticate!
   end
   
   namespace '/' do

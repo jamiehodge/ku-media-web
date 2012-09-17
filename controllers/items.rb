@@ -4,6 +4,10 @@ require 'ku/media'
 
 class Items < Base
   
+  before do
+    env['warden'] && env['warden'].authenticate!
+  end
+  
   namespace '/' do
     
     get do

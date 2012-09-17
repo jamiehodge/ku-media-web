@@ -17,7 +17,7 @@ html.no-js lang='en'
           a href='/' ITMedia Admin
       nav role='navigation'
         ul
-        - if env['warden'].user
+        - if env['warden'] && env['warden'].user
           == slim :'sessions/delete'
       #main role='main'
         == yield
