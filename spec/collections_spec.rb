@@ -1,5 +1,5 @@
 require_relative 'helper'
-require_relative '../collections'
+require_relative '../controllers/collections'
 
 describe Collections do
   include Rack::Test::Methods

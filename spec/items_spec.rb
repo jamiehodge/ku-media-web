@@ -1,5 +1,5 @@
 require_relative 'helper'
-require_relative '../items'
+require_relative '../controllers/items'
 
 describe Items do
   include Rack::Test::Methods

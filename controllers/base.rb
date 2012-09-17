@@ -11,7 +11,7 @@ require 'rake-pipeline/middleware'
 
 class Base < Sinatra::Base
   
-  set :root, File.expand_path('../', __FILE__)
+  set :root, File.expand_path('../../', __FILE__)
   
   enable :method_override
   

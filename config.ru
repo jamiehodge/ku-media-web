@@ -1,6 +1,6 @@
-require './collections'
-require './items'
-require './sessions'
+require './controllers/collections'
+require './controllers/items'
+require './controllers/sessions'
 
 require 'securerandom'
 
