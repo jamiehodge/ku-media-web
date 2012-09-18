@@ -1,3 +1,3 @@
-form.compact method='post' action="/#{collection.id}/links/#{link.url}"
+form.compact method='post' action=url("/#{parent.id}/authors/#{author.id}")
   input type='hidden' name='_method' value='delete'
   input type='submit' value='remove'

@@ -22,34 +22,34 @@ article
       dt 
         details
           summary authors
-          == slim :'collections/authors/new', locals: { collection: collection }
+          == slim :'authors/new', locals: { parent: collection }
       - for author in collection.authors
         dd 
-          == slim :'collections/authors/delete', locals: { collection: collection, author: author }
+          == slim :'authors/delete', locals: { parent: collection, author: author }
           = author.description
       dt 
         details
           summary keywords
-          == slim :'collections/keywords/new', locals: { collection: collection }
+          == slim :'keywords/new', locals: { parent: collection }
       - for keyword in collection.keywords
         dd 
-          == slim :'collections/keywords/delete', locals: { collection: collection, keyword: keyword }
-          = keyword.name
+          == slim :'keywords/delete', locals: { parent: collection, keyword: keyword }
+          a href=URI.encode("http://google.com/?q=#{keyword.name}") title=keyword.name target='_blank' = keyword.name
       dt 
         details
           summary tags
-          == slim :'collections/tags/new', locals: { collection: collection }
+          == slim :'tags/new', locals: { parent: collection }
       - for tag in collection.tags
         dd 
-          == slim :'collections/tags/delete', locals: { collection: collection, tag: tag }
+          == slim :'tags/delete', locals: { parent: collection, tag: tag }
           a href=URI.encode("http://twitter.com/search/?q=\"#{tag.name}\"") title=tag.name target='_blank' ##{tag.name}
       dt 
         details
           summary links
-          == slim :'collections/links/new', locals: { collection: collection }
+          == slim :'links/new', locals: { parent: collection }
       - for link in collection.links
         dd
-          == slim :'collections/links/delete', locals: { collection: collection, link: link }
+          == slim :'links/delete', locals: { parent: collection, link: link }
           a href=link.url title=link.title target='_blank' = link.title
       
   section
