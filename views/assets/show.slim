@@ -1,0 +1,5 @@
+video controls=true src="/assets/#{asset.id}"
+  - for proxy in asset.proxies_dataset.where(format_id: 'mp4')
+    source src="/proxies/#{proxy.id}"
+  - for proxy in asset.proxies_dataset.where(format_id: 'webm')
+    source src="/proxies/#{proxy.id}"

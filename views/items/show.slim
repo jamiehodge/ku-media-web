@@ -22,6 +22,17 @@ article
         time pubdate=true datetime=item.updated_at.xmlschema = item.updated_at.strftime '%A, %b %d'
     
   dl
+    dt 
+      details open=!item.asset
+        summary asset
+        - if item.asset
+          == slim :'assets/delete', locals: { item: item }
+          a href="/assets/#{item.asset.id}" title=item.asset.name target='_blank' = item.asset.name
+        - else
+          == slim :'assets/new', locals: { item: item }
+    - if item.asset
+      dd == slim :'assets/show', locals: { asset: item.asset }
+      
     dt description
     dd = item.description
     dt rating
@@ -62,4 +73,3 @@ article
       dd
         == slim :'links/delete', locals: { parent: item, link: link }
         a href=link.url title=link.title target='_blank' = link.title
-    

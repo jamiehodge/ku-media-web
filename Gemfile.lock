@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://github.com/jamiehodge/ku-media.git
-  revision: 7d04a846f54fa08b3414ceb819381b36564e1385
+  revision: c8457b06b81f84b0bc6ca2c24b9188bbb6a878a6
   specs:
     ku-media (0.0.1)
       addressable

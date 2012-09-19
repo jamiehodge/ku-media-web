@@ -1,4 +1,5 @@
 require_relative 'base'
+require_relative '../lib/asset_params'
 
 require 'ku/media'
 
@@ -182,10 +183,6 @@ class Items < Base
             @link = KU::Media::Link[params[:id]] || not_found
           end
           
-          get do
-            200
-          end
-          
           delete do
             @item.remove_link @link
             
@@ -196,6 +193,31 @@ class Items < Base
       
             slim :'items/show', locals: { item: @item }
           end
+        end
+      end
+      
+      namespace '/asset' do
+        
+        put do
+          @item.asset = KU::Media::Asset.new AssetParams.new(params[:asset]).to_hash
+          
+          etag          @item.lock_version
+          last_modified @item.updated_at
+        
+          headers 'Content-Location' => url("/#{@item.id}")
+      
+          slim :'items/show', locals: { item: @item }
+        end
+        
+        delete do
+          @item.asset.destroy
+          
+          etag          @item.lock_version
+          last_modified @item.updated_at
+        
+          headers 'Content-Location' => url("/#{@item.id}")
+      
+          slim :'items/show', locals: { item: @item }
         end
       end
     end

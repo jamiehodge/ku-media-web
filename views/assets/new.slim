@@ -1,0 +1,7 @@
+form method='post' action=url("/#{item.id}/asset") enctype='multipart/form-data'
+  fieldset
+    input name='_method' type='hidden' value='put'
+    p
+      input name='asset' type='file' accept='audio/*,video/*,image/*' required=true
+    p
+      input type='submit' value='upload'

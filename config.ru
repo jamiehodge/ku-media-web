@@ -1,5 +1,6 @@
 require './controllers/collections'
 require './controllers/items'
+require './controllers/assets'
 require './controllers/sessions'
 
 require 'securerandom'
@@ -28,6 +29,10 @@ end
 
 map '/items' do
   run Items
+end
+
+map '/assets' do
+  run Assets
 end
 
 map '/sessions' do
