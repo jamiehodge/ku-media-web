@@ -20,56 +20,58 @@ article
         time datetime=item.created_at.xmlschema = item.created_at.strftime '%A, %b %d'
         ', updated
         time pubdate=true datetime=item.updated_at.xmlschema = item.updated_at.strftime '%A, %b %d'
-    
-  dl
-    dt 
-      details open=!item.asset
-        summary asset
-        - if item.asset
-          == slim :'assets/delete', locals: { item: item }
-          a href="/assets/#{item.asset.id}" title=item.asset.name target='_blank' = item.asset.name
-        - else
-          == slim :'assets/new', locals: { item: item }
-    - if item.asset
-      dd == slim :'assets/show', locals: { asset: item.asset }
+
+  section
+  
+    dl
+      dt 
+        details open=!item.asset
+          summary asset
+          - if item.asset
+            == slim :'assets/delete', locals: { item: item }
+            a href="/assets/#{item.asset.id}" title=item.asset.name target='_blank' = item.asset.name
+          - else
+            == slim :'assets/new', locals: { item: item }
+      - if item.asset
+        dd == slim :'assets/show', locals: { asset: item.asset }
       
-    dt description
-    dd = item.description
-    dt rating
-    dd = item.explicit ? 'explicit' : 'clean'
-    dt language
-    dd = item.language.name
-    dt category
-    dd = item.category.name
-    dt 
-      details
-        summary authors
-        == slim :'authors/new', locals: { parent: item }
-    - for author in item.authors
-      dd 
-        == slim :'authors/delete', locals: { parent: item, author: author }
-        = author.full_name
-    dt 
-      details
-        summary keywords
-        == slim :'keywords/new', locals: { parent: item }
-    - for keyword in item.keywords
-      dd 
-        == slim :'keywords/delete', locals: { parent: item, keyword: keyword }
-        a href=URI.encode("http://google.com/?q=#{keyword.name}") title=keyword.name target='_blank' = keyword.name
-    dt 
-      details
-        summary tags
-        == slim :'tags/new', locals: { parent: item }
-    - for tag in item.tags
-      dd 
-        == slim :'tags/delete', locals: { parent: item, tag: tag }
-        a href=URI.encode("http://twitter.com/search/?q=\"#{tag.name}\"") title=tag.name target='_blank' ##{tag.name}
-    dt 
-      details
-        summary links
-        == slim :'links/new', locals: { parent: item }
-    - for link in item.links
-      dd
-        == slim :'links/delete', locals: { parent: item, link: link }
-        a href=link.url title=link.title target='_blank' = link.title
+      dt description
+      dd = item.description
+      dt rating
+      dd = item.explicit ? 'explicit' : 'clean'
+      dt language
+      dd = item.language.name
+      dt category
+      dd = item.category.name
+      dt 
+        details
+          summary authors
+          == slim :'authors/new', locals: { parent: item }
+      - for author in item.authors
+        dd 
+          == slim :'authors/delete', locals: { parent: item, author: author }
+          = author.full_name
+      dt 
+        details
+          summary keywords
+          == slim :'keywords/new', locals: { parent: item }
+      - for keyword in item.keywords
+        dd 
+          == slim :'keywords/delete', locals: { parent: item, keyword: keyword }
+          a href=URI.encode("http://google.com/?q=#{keyword.name}") title=keyword.name target='_blank' = keyword.name
+      dt 
+        details
+          summary tags
+          == slim :'tags/new', locals: { parent: item }
+      - for tag in item.tags
+        dd 
+          == slim :'tags/delete', locals: { parent: item, tag: tag }
+          a href=URI.encode("http://twitter.com/search/?q=\"#{tag.name}\"") title=tag.name target='_blank' ##{tag.name}
+      dt 
+        details
+          summary links
+          == slim :'links/new', locals: { parent: item }
+      - for link in item.links
+        dd
+          == slim :'links/delete', locals: { parent: item, link: link }
+          a href=link.url title=link.title target='_blank' = link.title
