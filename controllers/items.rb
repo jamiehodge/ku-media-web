@@ -19,7 +19,8 @@ class Items < Base
     end
     
     post do
-      @item = KU::Media::Item.create params[:item] || {}
+      collection = KU::Media::Collection[params[:item][:collection_id]]
+      @item = collection.add_item params[:item] || {}
     
       headers \
         'Location'         => url("/#{@item.id}"),
@@ -55,13 +56,14 @@ class Items < Base
       
       delete do
         @item.destroy
+        @item.collection.nudge
         
-        etag items_index.sum(:lock_version)
-        last_modified items_index.first.updated_at unless items_index.empty?
+        etag @item.collection.lock_version
+        last_modified @item.collection.updated_at
         
-        headers 'Content-Location' => url('/')
+        headers 'Content-Location' => "/#{@item.collection.id}"
       
-        slim :'items/index', locals: { items: items_index }
+        slim :'collections/show', locals: { collection: @item.collection }
       end
       
       namespace '/authors' do
